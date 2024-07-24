@@ -1,0 +1,11 @@
+Este repositório contém arquivos de configuração do Terraform para implantar um cluster k3s de nó único na AWS. 
+A implantação é automatizada usando GitHub Actions e Após a implantação, um servidor Nginx é configurado para exibir uma página "Hello World".
+
+## Pré-requisitos
+
+- Terraform
+- GitHub CLI
+- Conta AWS com credenciais configuradas no GitHub Actions
+- Par de chaves SSH para acessar a instância EC2
+
+## Estrutura do Repositório
