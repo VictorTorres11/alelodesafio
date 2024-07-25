@@ -22,13 +22,3 @@ output "subnet_id" {
   description = "ID of the Subnet"
   value       = aws_subnet.main.id
 }
-
-output "kubeconfig_dns" {
-  description = "Path to the the kubeconfig file using DNS address"
-  value       = "/home/centos/kubeconfig"
-}
-
-output "kubeconfig_ip" {
-  description = "Path to the kubeconfig file using IP address"
-  value       = "/home/centos/kubeconfig_ip"
-}

@@ -1,10 +1,14 @@
 #!/bin/bash
-
-# Definir variáveis de ambiente
+#######################
+# Environment variable
+#######################
 export KUBECONFIG="/.kube/config"
 echo 'export KUBECONFIG="/.kube/config"' >> /home/ec2-user/.bashrc
 source /home/ec2-user/.bashrc
 
+#######################
+# Updates and Pre-requisities
+#######################
 sudo yum update -y
 sudo yum install -y curl conntrack docker
 sudo service docker start
@@ -34,13 +38,17 @@ sudo cp /usr/local/bin/helm /usr/bin/helm
 sudo rm -f get_helm.sh
 helm version
 
-
+#######################
 # Kind Installation
+#######################
 sudo curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 sudo chmod +x ./kind
 sudo mv ./kind /usr/local/bin
 kind create cluster --name alelok8s --image kindest/node:v1.21.10
 
+#######################
+# Kubectl config
+#######################
 sudo chmod 777 -R /.kube
 sudo chmod 777 /.kube/config
 
