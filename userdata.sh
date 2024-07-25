@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Definir variáveis de ambiente
+export KUBECONFIG="/.kube/config"
+
 sudo yum update -y
 sudo yum install -y curl conntrack docker
 sudo service docker start
@@ -33,8 +37,9 @@ helm version
 sudo curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 sudo chmod +x ./kind
 sudo mv ./kind /usr/local/bin
-sudo chmod 777 -R /.kube
-export KUBECONFIG=/.kube/config
 kind create cluster --name alelok8s --image kindest/node:v1.21.10
+
+sudo chmod 777 -R /.kube
+sudo chmod 777 /.kube/config
 
 kubectl cluster-info --context kind-alelok8s
