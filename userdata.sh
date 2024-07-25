@@ -2,6 +2,8 @@
 
 # Definir variáveis de ambiente
 export KUBECONFIG="/.kube/config"
+echo 'export KUBECONFIG="/.kube/config"' >> /home/ec2-user/.bashrc
+source /home/ec2-user/.bashrc
 
 sudo yum update -y
 sudo yum install -y curl conntrack docker
