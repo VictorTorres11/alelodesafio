@@ -28,13 +28,14 @@ Adicione os seguintes segredos:
 1. Conectar à instância EC2
 
 
-ssh -i path/to/your/private-key.pem ec2-user@<instance_public_ip>
+ssh -i alelodesafio/my-key ec2-user@<instance_public_ip>
 
 2. Verificar a instalação do MiniKube
 
 sudo kubectl get nodes
 
 ## Implantando o Nginx
+
 
 1. Criar um deployment para o Nginx
 
@@ -44,7 +45,23 @@ sudo kubectl create deployment nginx --image=nginx
 
 sudo kubectl expose deployment nginx --type=LoadBalancer --port=80
 
+3. Criação Cluster IP expose
+   
+kubectl expose pod nginx-ID-DEPLOYMENT --port=80 --target-port=80 --name=nginx-service --type=ClusterIP
+
+## Efetuando comunicação com o NGINX
+
+
+1. Iniciar pod para teste com attach
+
+kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
+
+2. Executar comando para comunicação com o NGINX
+
+wget -qO- http://nginx-service:80
+
 ## Limpando Deploy Terraform
+
 
 Para destruir a infraestrutura, execute:
 
