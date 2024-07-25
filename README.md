@@ -1,17 +1,18 @@
 Este repositório contém arquivos de configuração do Terraform para implantar um cluster k3s de nó único na AWS. 
+
 A implantação é automatizada usando GitHub Actions e Após a implantação, um servidor Nginx é configurado para exibir uma página "Hello World".
 
 ## Pré-requisitos
+
 
 - Terraform
 - GitHub CLI
 - Conta AWS com credenciais configuradas no GitHub Actions
 - Par de chaves SSH para acessar a instância EC2
 
-## Estrutura do Repositório
-
-
 ## Configurar Segredos no GitHub
+
+
 Para que o GitHub Actions possa acessar suas credenciais da AWS e outras informações sensíveis, você precisa configurar os segredos do repositório:
 
 No GitHub, vá para a página do repositório.
@@ -25,8 +26,8 @@ Adicione os seguintes segredos:
 
 ## Acessando o Cluster
 
-1. Conectar à instância EC2
 
+1. Conectar à instância EC2
 
 ssh -i alelodesafio/my-key ec2-user@<instance_public_ip>
 
@@ -66,3 +67,16 @@ wget -qO- http://nginx-service:80
 Para destruir a infraestrutura, execute:
 
 terraform destroy -auto-approve
+
+
+## Evidências
+
+Neste mesmo repositório, no diretório evidências foi disponibilizado algumas imagens de comprovação das execuções manuais e de pipeline.
+
+- Variáveis adicionadas no GitHub Actions
+- Imagem de build/deploy através do GitHub Actions
+- Imagem de Deploy EC2
+- Conexão com EC2 Criada
+- Criação de deployment nginx
+- Criação de services para comunicação
+- Criação de pod teste e execução de comando WGET com retorno do frontend NGINX
